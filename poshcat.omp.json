@@ -1,0 +1,129 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "palette": {
+        "Rosewater": "#f5e0dc",
+        "Flamingo": "#f2cdcd",
+        "Pink": "#f5c2e7",
+        "Mauve": "#cba6f7",
+        "Red": "#f38ba8",
+        "Maroon": "#eba0ac",
+        "Peach": "#fab387",
+        "Yellow": "#f9e2af",
+        "Green": "#a6e3a1",
+        "Teal": "#94e2d5",
+        "Sky": "#89dceb",
+        "Sapphire": "#74c7ec",
+        "Blue": "#89b4fa",
+        "Lavender": "#b4befe",
+        "Text": "#cdd6f4",
+        "Subtext1": "#bac2de",
+        "Subtext0": "#a6adc8",
+        "Overlay2": "#9399b2",
+        "Overlay1": "#7f849c",
+        "Overlay0": "#6c7086",
+        "Surface2": "#585b70",
+        "Surface1": "#45475a",
+        "Surface0": "#313244",
+        "Base": "#1e1e2e",
+        "Mantle": "#181825",
+        "Crust": "#11111b"
+    },
+    "blocks": [
+        {
+            "alignment": "left",
+            "newline": true,
+            "segments": [
+                {
+                    "background": "p:Crust",
+                    "foreground": "p:Lavender",
+                    "style": "powerline",
+                    "foreground_templates": ["{{ if .Root }}p:Pink{{ end }}"],
+                    "template": " {{ if .WSL }}WSL in {{ end }}{{.Icon}} ",
+                    "type": "os"
+                },
+                {
+                    "background": "p:Lavender",
+                    "foreground": "p:Crust",
+                    "powerline_symbol": "\ue0b4",
+                    "properties": {
+                        "style": "agnoster_short",
+                        "max_depth": 2
+                    },
+                    "style": "powerline",
+                    "template": " {{ .Path }} ",
+                    "type": "path"
+                },
+                {
+                    "background": "p:Flamingo",
+                    "foreground": "p:Crust",
+                    "powerline_symbol": "\ue0b4",
+                    "style": "powerline",
+                    "template": " {{ .RepoName }}",
+                    "type": "git"
+                },
+                {
+                    "background": "p:Rosewater",
+                    "foreground": "p:Crust",
+                    "powerline_symbol": "\ue0b4",
+                    "style": "powerline",
+                    "template": " {{ .HEAD }} ",
+                    "type": "git"
+                }
+            ],
+            "type": "prompt"
+        },
+        {
+            "alignment": "right",
+            "segments": [
+                {
+                    "type": "executiontime",
+                    "style": "powerline",
+                    "invert_powerline": true,
+                    "powerline_symbol": "\uE0B6",
+                    "foreground": "p:Crust",
+                    "background": "p:Pink",
+                    "background_templates": [
+                        "{{ if gt .Code 0 }}p:Red{{ end }}"
+                    ],
+                    "properties": {
+                        "always_enabled": true,
+                        "style": "austin"
+                    }
+                },
+                {
+                    "background": "p:Mauve",
+                    "foreground": "p:Crust",
+                    "powerline_symbol": "\ue0b6",
+                    "properties": {
+                        "time_format": "15:04:05"
+                    },
+                    "style": "diamond",
+                    "invert_powerline": true,
+                    "template": " {{ .CurrentDate | date .Format }} ",
+                    "type": "time"
+                }
+            ],
+            "type": "prompt"
+        },
+        {
+            "alignment": "left",
+            "newline": true,
+            "segments": [
+                {
+                    "foreground": "p:Green",
+                    "foreground_templates": [
+                        "{{ if gt .Code 0 }}p:Red{{ end }}"
+                    ],
+                    "properties": {
+                        "always_enabled": true
+                    },
+                    "style": "plain",
+                    "template": "\u276f ",
+                    "type": "exit"
+                }
+            ],
+            "type": "prompt"
+        }
+    ],
+    "version": 2
+}
