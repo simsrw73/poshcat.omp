@@ -62,12 +62,23 @@
                     "type": "git"
                 },
                 {
-                    "background": "p:Rosewater",
+                    "background": "p:Yellow",
                     "foreground": "p:Crust",
-                    "powerline_symbol": "\ue0b4",
+                    "powerline_symbol": "\uE0B4",
                     "style": "powerline",
-                    "template": " {{ .HEAD }} ",
-                    "type": "git"
+                    "background_templates": [
+                        "{{ if or (.Working.Changed) (.Staging.Changed) }}p:Rosewater{{ end }}",
+                        "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:Pink{{ end }}",
+                        "{{ if gt .Ahead 0 }}p:Peach{{ end }}",
+                        "{{ if gt .Behind 0 }}p:Peach{{ end }}"
+                    ],
+                    "template": " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0}} \uF692 {{ .StashCount }}{{ end }}{{ if gt .WorktreeCount 0}} \uf1bb {{ .WorktreeCount }}{{ end }}",
+                    "type": "git",
+                    "properties": {
+                        "fetch_status": true,
+                        "fetch_stash_count": true,
+                        "fetch_working_count": true
+                    }
                 }
             ],
             "type": "prompt"
