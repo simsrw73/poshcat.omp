@@ -1,5 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "version": 2,
     "palettes": {
         "template": "Mocha",
         "list": {
@@ -119,111 +120,110 @@
     },
     "blocks": [
         {
+            "type": "prompt",
             "alignment": "left",
             "newline": true,
             "segments": [
                 {
+                    "type": "os",
+                    "style": "powerline",
                     "background": "p:Crust",
                     "foreground": "p:Lavender",
-                    "style": "powerline",
                     "foreground_templates": ["{{ if .Root }}p:Pink{{ end }}"],
-                    "template": " {{ if .WSL }}WSL in {{ end }}{{.Icon}} ",
-                    "type": "os"
+                    "template": " {{ if .WSL }}WSL in {{ end }}{{.Icon}} "
                 },
                 {
-                    "background": "p:Lavender",
-                    "foreground": "p:Crust",
-                    "powerline_symbol": "\ue0b4",
+                    "type": "path",
                     "properties": {
                         "style": "agnoster_short",
                         "max_depth": 2
                     },
                     "style": "powerline",
-                    "template": " {{ .Path }} ",
-                    "type": "path"
+                    "powerline_symbol": "\ue0b4",
+                    "background": "p:Lavender",
+                    "foreground": "p:Crust",
+                    "template": " {{ .Path }} "
                 },
                 {
+                    "type": "text",
+                    "style": "powerline",
+                    "powerline_symbol": "\ue0b4",
                     "background": "p:Flamingo",
                     "foreground": "p:Crust",
-                    "powerline_symbol": "\ue0b4",
-                    "style": "powerline",
-                    "template": " {{ if .Segments.Project.Name }}{{ .Segments.Project.Name }}{{ else }}{{ .Segments.Git.RepoName }}{{ end }}",
-                    "type": "text"
+                    "template": " {{ if .Segments.Project.Name }}{{ .Segments.Project.Name }}{{ else }}{{ .Segments.Git.RepoName }}{{ end }}"
                 },
                 {
+                    "type": "git",
+                    "properties": {
+                        "fetch_status": true,
+                        "fetch_stash_count": true,
+                        "fetch_working_count": true
+                    },
+                    "style": "powerline",
+                    "powerline_symbol": "\uE0B4",
                     "background": "p:Rosewater",
                     "foreground": "p:Crust",
-                    "powerline_symbol": "\uE0B4",
-                    "style": "powerline",
                     "background_templates": [
                         "{{ if or (.Working.Changed) (.Staging.Changed) }}p:Yellow{{ end }}",
                         "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:Maroon{{ end }}",
                         "{{ if gt .Ahead 0 }}p:Peach{{ end }}",
                         "{{ if gt .Behind 0 }}p:Peach{{ end }}"
                     ],
-                    "template": " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0}} \uF692 {{ .StashCount }}{{ end }}{{ if gt .WorktreeCount 0}} \uf1bb {{ .WorktreeCount }}{{ end }}",
-                    "type": "git",
-                    "properties": {
-                        "fetch_status": true,
-                        "fetch_stash_count": true,
-                        "fetch_working_count": true
-                    }
+                    "template": " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0}} \uF692 {{ .StashCount }}{{ end }}{{ if gt .WorktreeCount 0}} \uf1bb {{ .WorktreeCount }}{{ end }}"
                 }
-            ],
-            "type": "prompt"
+            ]
         },
         {
+            "type": "prompt",
             "alignment": "right",
             "segments": [
                 {
                     "type": "executiontime",
-                    "style": "powerline",
-                    "invert_powerline": true,
-                    "powerline_symbol": "\uE0B6",
-                    "foreground": "p:Crust",
-                    "background": "p:Pink",
-                    "background_templates": [
-                        "{{ if gt .Code 0 }}p:Red{{ end }}"
-                    ],
                     "properties": {
                         "always_enabled": true,
                         "style": "austin"
-                    }
+                    },
+                    "style": "powerline",
+                    "powerline_symbol": "\uE0B6",
+                    "invert_powerline": true,
+                    "background": "p:Pink",
+                    "foreground": "p:Crust",
+                    "background_templates": [
+                        "{{ if gt .Code 0 }}p:Red{{ end }}"
+                    ]
                 },
                 {
-                    "background": "p:Mauve",
-                    "foreground": "p:Crust",
-                    "powerline_symbol": "\ue0b6",
+                    "type": "time",
                     "properties": {
                         "time_format": "15:04:05"
                     },
                     "style": "diamond",
+                    "powerline_symbol": "\ue0b6",
                     "invert_powerline": true,
-                    "template": " {{ .CurrentDate | date .Format }} ",
-                    "type": "time"
+                    "background": "p:Mauve",
+                    "foreground": "p:Crust",
+                    "template": " {{ .CurrentDate | date .Format }} "
                 }
-            ],
-            "type": "prompt"
+            ]
         },
         {
+            "type": "prompt",
             "alignment": "left",
             "newline": true,
             "segments": [
                 {
-                    "foreground": "p:Green",
-                    "foreground_templates": [
-                        "{{ if gt .Code 0 }}p:Red{{ end }}"
-                    ],
+                    "type": "exit",
                     "properties": {
                         "always_enabled": true
                     },
                     "style": "plain",
-                    "template": "\u276f ",
-                    "type": "exit"
+                    "foreground": "p:Green",
+                    "foreground_templates": [
+                        "{{ if gt .Code 0 }}p:Red{{ end }}"
+                    ],
+                    "template": "\u276f "
                 }
-            ],
-            "type": "prompt"
+            ]
         }
-    ],
-    "version": 2
+    ]
 }
