@@ -3,7 +3,7 @@
     "palettes": {
         "template": "Mocha",
         "list": {
-            "mocha": {
+            "Mocha": {
                 "Rosewater": "#f5e0dc",
                 "Flamingo": "#f2cdcd",
                 "Pink": "#f5c2e7",
@@ -143,12 +143,17 @@
                     "type": "path"
                 },
                 {
+                    "style": "plain",
+                    "template": " ",
+                    "type": "project"
+                },
+                {
                     "background": "p:Flamingo",
                     "foreground": "p:Crust",
                     "powerline_symbol": "\ue0b4",
                     "style": "powerline",
-                    "template": " {{ if .Error }}Oops{{ else if .Name }}{{ .Name }}{{ else }}Here we are{{ end }}",
-                    "type": "project"
+                    "template": " {{ if .Segments.Project.Name }}{{ .Segments.Project.Name }}{{ else }}{{ .Segments.Git.RepoName }}{{ end }}",
+                    "type": "text"
                 },
                 {
                     "background": "p:Yellow",
