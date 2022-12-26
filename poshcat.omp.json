@@ -150,13 +150,7 @@
                     "powerline_symbol": "\ue0b4",
                     "background": "p:Flamingo",
                     "foreground": "p:Crust",
-                    "templates": [
-                        "{{ if .Segments.Project.Name }}",
-                        " {{ .Segments.Project.Name }}",
-                        "{{ else }}",
-                        " {{ .Segments.Git.RepoName }}",
-                        "{{ end }}"
-                    ]
+                    "template": " {{ if .Segments.Project.Name }}{{ .Segments.Project.Name }}{{ else }}{{ .Segments.Git.RepoName }}{{ end }}"
                 },
                 {
                     "type": "git",
