@@ -145,6 +145,11 @@
                     "template": " {{ .Path }} "
                 },
                 {
+                    "type": "project",
+                    "style": "plain",
+                    "template": " "
+                },
+                {
                     "type": "text",
                     "style": "powerline",
                     "powerline_symbol": "\ue0b4",
