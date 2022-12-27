@@ -5,8 +5,6 @@
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
 </h3>
 
-<img src="https://github.com/simsrw73/poshcat.omp/raw/main/assets/preview.webp"/>
-
 ## Previews
 
 <details>
