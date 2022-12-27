@@ -2,7 +2,7 @@
     "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
     "version": 2,
     "palettes": {
-        "template": "Mocha",
+        "template": "Latte",
         "list": {
             "Mocha": {
                 "Rosewater": "#f5e0dc",
@@ -28,7 +28,7 @@
                 "Surface2": "#585b70",
                 "Surface1": "#45475a",
                 "Surface0": "#313244",
-                "Base": "#1e1e2e",
+                "surface0": "#1e1e2e",
                 "Mantle": "#181825",
                 "Crust": "#11111b"
             },
@@ -56,7 +56,7 @@
                 "Surface2": "#5b6078",
                 "Surface1": "#494d64",
                 "Surface0": "#363a4f",
-                "Base": "#24273a",
+                "surface0": "#24273a",
                 "Mantle": "#1e2030",
                 "Crust": "#181926"
             },
@@ -84,7 +84,7 @@
                 "Surface2": "#626880",
                 "Surface1": "#51576d",
                 "Surface0": "#414559",
-                "Base": "#303446",
+                "surface0": "#303446",
                 "Mantle": "#292c3c",
                 "Crust": "#232634"
             },
@@ -112,7 +112,7 @@
                 "Surface2": "#acb0be",
                 "Surface1": "#bcc0cc",
                 "Surface0": "#ccd0da",
-                "Base": "#eff1f5",
+                "surface0": "#eff1f5",
                 "Mantle": "#e6e9ef",
                 "Crust": "#dce0e8"
             }
@@ -126,36 +126,20 @@
             "segments": [
                 {
                     "type": "os",
-                    "style": "powerline",
-                    "background": "p:Crust",
-                    "foreground": "p:Lavender",
-                    "foreground_templates": ["{{ if .Root }}p:Pink{{ end }}"],
-                    "template": " {{ if .WSL }}WSL in {{ end }}{{.Icon}} "
+                    "style": "plain",
+                    "background": "p:Surface0",
+                    "foreground": "p:Sapphire",
+                    "template": " {{ if .Root }}<p:Yellow>\uF0E7</>{{ else }}{{ if .WSL }}WSL at {{ end }}{{.Icon}}{{ end }} <p:Rosewater>\uE0B1</>"
                 },
                 {
                     "type": "path",
                     "properties": {
-                        "style": "agnoster_short",
-                        "max_depth": 2
+                        "style": "full"
                     },
-                    "style": "powerline",
-                    "powerline_symbol": "\uE0B4",
-                    "background": "p:Lavender",
-                    "foreground": "p:Crust",
-                    "template": " {{ .Path }} "
-                },
-                {
-                    "type": "project",
                     "style": "plain",
-                    "template": " "
-                },
-                {
-                    "type": "text",
-                    "style": "powerline",
-                    "powerline_symbol": "\uE0B4",
-                    "background": "p:Flamingo",
-                    "foreground": "p:Crust",
-                    "template": " {{ if .Segments.Project.Name }}{{ .Segments.Project.Name }}{{ else }}{{ .Segments.Git.RepoName }}{{ end }}"
+                    "background": "p:Surface0",
+                    "foreground": "p:Sapphire",
+                    "template": " {{ .Path }} "
                 },
                 {
                     "type": "git",
@@ -164,25 +148,24 @@
                         "fetch_stash_count": true,
                         "fetch_working_count": true
                     },
-                    "style": "powerline",
-                    "powerline_symbol": "\uE0B4",
-                    "background": "p:Rosewater",
-                    "foreground": "p:Crust",
-                    "background_templates": [
-                        "{{ if or (.Working.Changed) (.Staging.Changed) }}p:Yellow{{ end }}",
-                        "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:Maroon{{ end }}",
-                        "{{ if gt .Ahead 0 }}p:Peach{{ end }}",
-                        "{{ if gt .Behind 0 }}p:Peach{{ end }}"
-                    ],
+                    "style": "plain",
+                    "background": "p:Surface0",
+                    "foreground": "p:Green",
                     "templates": [
-                        " {{ .HEAD }}",
-                        "{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}",
-                        "{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}",
-                        "{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}",
-                        "{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}",
-                        "{{ if gt .StashCount 0 }} \uF692 {{ .StashCount }}{{ end }}",
-                        "{{ if gt .WorktreeCount 0 }} \uF1BB {{ .WorktreeCount }}{{ end }}"
+                        "<p:Rosewater>\uE0B1</> {{ .HEAD }} ",
+                        "{{ if .BranchStatus }}<p:Green>{{ .BranchStatus }}</> {{ end }}",
+                        "{{ if .Staging.Changed }}<p:Yellow>+{{ add .Staging.Deleted .Staging.Added .Staging.Modified }}</> {{ end }}",
+                        "{{ if .Working.Changed }}<p:Yellow>!{{ add .Working.Deleted .Working.Added .Working.Modified }}</> {{ end }}",
+                        "{{ if gt .StashCount 0 }}<p:Pink>*\uF692</> {{ .StashCount }} {{ end }}",
+                        "{{ if gt .WorktreeCount 0 }}<p:Pink>\uF1BB</> {{ .WorktreeCount }} {{ end }}"
                     ]
+                },
+                {
+                    "type": "text",
+                    "style": "plain",
+                    "background": "transparent",
+                    "foreground": "p:Surface0",
+                    "template": "\uE0B0"
                 }
             ]
         },
@@ -191,31 +174,22 @@
             "alignment": "right",
             "segments": [
                 {
-                    "type": "executiontime",
-                    "properties": {
-                        "always_enabled": true,
-                        "style": "austin"
-                    },
-                    "style": "powerline",
-                    "powerline_symbol": "\uE0B6",
-                    "invert_powerline": true,
-                    "background": "p:Pink",
-                    "foreground": "p:Crust",
-                    "background_templates": [
-                        "{{ if gt .Code 0 }}p:Red{{ end }}"
-                    ]
+                    "type": "session",
+                    "style": "diamond",
+                    "leading_diamond": "\ue0b2",
+                    "background": "p:Surface0",
+                    "foreground": "p:Yellow",
+                    "template": " {{ .UserName }}@{{ .HostName }} <p:Rosewater>\ue0b3</> "
                 },
                 {
                     "type": "time",
                     "properties": {
                         "time_format": "15:04:05"
                     },
-                    "style": "diamond",
-                    "powerline_symbol": "\uE0B6",
-                    "invert_powerline": true,
-                    "background": "p:Mauve",
-                    "foreground": "p:Crust",
-                    "template": " {{ .CurrentDate | date .Format }} "
+                    "style": "plain",
+                    "background": "p:Surface0",
+                    "foreground": "p:Teal",
+                    "template": " {{ .CurrentDate | date .Format }} \uf017 "
                 }
             ]
         },
