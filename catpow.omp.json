@@ -2,7 +2,7 @@
     "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
     "version": 2,
     "palettes": {
-        "template": "Latte",
+        "template": "Mocha",
         "list": {
             "Mocha": {
                 "Rosewater": "#f5e0dc",
@@ -127,9 +127,9 @@
                 {
                     "type": "os",
                     "style": "plain",
-                    "background": "p:Surface0",
+                    "background": "p:Mantle",
                     "foreground": "p:Sapphire",
-                    "template": " {{ if .Root }}<p:Yellow>\uF0E7</>{{ else }}{{ if .WSL }}WSL at {{ end }}{{.Icon}}{{ end }} <p:Rosewater>\uE0B1</>"
+                    "template": " {{ if .Root }}<p:Yellow>\uF0E7</>{{ else }}{{ if .WSL }}WSL at {{ end }}{{.Icon}}{{ end }} <p:Overlay2>\uE0B1</>"
                 },
                 {
                     "type": "path",
@@ -137,9 +137,9 @@
                         "style": "full"
                     },
                     "style": "plain",
-                    "background": "p:Surface0",
+                    "background": "p:Mantle",
                     "foreground": "p:Sapphire",
-                    "template": " {{ .Path }} "
+                    "template": " {{ .Path }} {{ $foo := 123 }} "
                 },
                 {
                     "type": "git",
@@ -149,10 +149,10 @@
                         "fetch_working_count": true
                     },
                     "style": "plain",
-                    "background": "p:Surface0",
+                    "background": "p:Mantle",
                     "foreground": "p:Green",
                     "templates": [
-                        "<p:Rosewater>\uE0B1</> {{ .HEAD }} ",
+                        "<p:Overlay2>\uE0B1</> {{ .HEAD }} ",
                         "{{ if .BranchStatus }}<p:Green>{{ .BranchStatus }}</> {{ end }}",
                         "{{ if .Staging.Changed }}<p:Yellow>+{{ add .Staging.Deleted .Staging.Added .Staging.Modified }}</> {{ end }}",
                         "{{ if .Working.Changed }}<p:Yellow>!{{ add .Working.Deleted .Working.Added .Working.Modified }}</> {{ end }}",
@@ -164,7 +164,7 @@
                     "type": "text",
                     "style": "plain",
                     "background": "transparent",
-                    "foreground": "p:Surface0",
+                    "foreground": "p:Mantle",
                     "template": "\uE0B0"
                 }
             ]
@@ -177,9 +177,9 @@
                     "type": "session",
                     "style": "diamond",
                     "leading_diamond": "\ue0b2",
-                    "background": "p:Surface0",
+                    "background": "p:Mantle",
                     "foreground": "p:Yellow",
-                    "template": " {{ .UserName }}@{{ .HostName }} <p:Rosewater>\ue0b3</> "
+                    "template": " {{ .UserName }}@{{ .HostName }} <p:Overlay2>\ue0b3</> "
                 },
                 {
                     "type": "time",
@@ -187,7 +187,7 @@
                         "time_format": "15:04:05"
                     },
                     "style": "plain",
-                    "background": "p:Surface0",
+                    "background": "p:Mantle",
                     "foreground": "p:Teal",
                     "template": " {{ .CurrentDate | date .Format }} \uf017 "
                 }
