@@ -139,7 +139,7 @@
                     "style": "plain",
                     "background": "p:Mantle",
                     "foreground": "p:Sapphire",
-                    "template": " {{ .Path }} {{ $foo := 123 }} "
+                    "template": " {{ .Path }} "
                 },
                 {
                     "type": "git",
