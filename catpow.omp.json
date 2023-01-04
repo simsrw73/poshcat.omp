@@ -127,9 +127,9 @@
                 {
                     "type": "os",
                     "style": "plain",
-                    "background": "p:Mantle",
+                    "background": "p:Crust",
                     "foreground": "p:Sapphire",
-                    "template": " {{ if .Root }}<p:Yellow>\uF0E7</>{{ else }}{{ if .WSL }}WSL at {{ end }}{{.Icon}}{{ end }} <p:Overlay2>\uE0B1</>"
+                    "template": " {{ if .Root }}<p:Yellow>\uF0E7</>{{ else }}{{ if .WSL }}WSL at {{ end }}{{.Icon}}{{ end }} <p:Overlay0>\uE0B1</>"
                 },
                 {
                     "type": "path",
@@ -137,7 +137,7 @@
                         "style": "full"
                     },
                     "style": "plain",
-                    "background": "p:Mantle",
+                    "background": "p:Crust",
                     "foreground": "p:Sapphire",
                     "template": " {{ .Path }} "
                 },
@@ -149,10 +149,10 @@
                         "fetch_working_count": true
                     },
                     "style": "plain",
-                    "background": "p:Mantle",
+                    "background": "p:Crust",
                     "foreground": "p:Green",
                     "templates": [
-                        "<p:Overlay2>\uE0B1</> {{ .HEAD }} ",
+                        "<p:Overlay0>\uE0B1</> {{ .HEAD }} ",
                         "{{ if .BranchStatus }}<p:Green>{{ .BranchStatus }}</> {{ end }}",
                         "{{ if .Staging.Changed }}<p:Yellow>+{{ add .Staging.Deleted .Staging.Added .Staging.Modified }}</> {{ end }}",
                         "{{ if add .Working.Deleted .Working.Modified }}<p:Yellow>!{{ add .Working.Deleted .Working.Modified }}</> {{ end }}",
@@ -165,7 +165,7 @@
                     "type": "text",
                     "style": "plain",
                     "background": "transparent",
-                    "foreground": "p:Mantle",
+                    "foreground": "p:Crust",
                     "template": "\uE0B0"
                 }
             ]
@@ -178,9 +178,9 @@
                     "type": "session",
                     "style": "diamond",
                     "leading_diamond": "\ue0b2",
-                    "background": "p:Mantle",
+                    "background": "p:Crust",
                     "foreground": "p:Yellow",
-                    "template": " {{ .UserName }}@{{ .HostName }} <p:Overlay2>\ue0b3</> "
+                    "template": " {{ .UserName }}@{{ .HostName }} <p:Overlay0>\ue0b3</>"
                 },
                 {
                     "type": "time",
@@ -188,9 +188,9 @@
                         "time_format": "15:04:05"
                     },
                     "style": "plain",
-                    "background": "p:Mantle",
+                    "background": "p:Crust",
                     "foreground": "p:Teal",
-                    "template": " {{ .CurrentDate | date .Format }} \uf017 "
+                    "template": " {{ .CurrentDate | date .Format }} \uf017  "
                 }
             ]
         },
