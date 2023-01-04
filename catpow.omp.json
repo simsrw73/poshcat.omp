@@ -157,8 +157,8 @@
                         "{{ if .Staging.Changed }}<p:Yellow>+{{ add .Staging.Deleted .Staging.Added .Staging.Modified }}</> {{ end }}",
                         "{{ if add .Working.Deleted .Working.Modified }}<p:Yellow>!{{ add .Working.Deleted .Working.Modified }}</> {{ end }}",
                         "{{ if .Working.Added }}<p:Sky>?{{ .Working.Added }}</>{{ end }} ",
-                        "{{ if 1 }}<p:Pink>*{{ .StashCount }}</>{{ end }} ",
-                        "{{ if 1 }}<p:Pink>\uF1BB{{ .WorktreeCount }}</> {{ end }}"
+                        "{{ if gt .StashCount 0 }}<p:Maroon>*{{ .StashCount }}</>{{ end }} ",
+                        "{{ if gt .WorktreeCount 0 }}<p:Maroon>\uF1BB{{ .WorktreeCount }}</> {{ end }}"
                     ]
                 },
                 {
